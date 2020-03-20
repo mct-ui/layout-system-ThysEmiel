@@ -5,7 +5,9 @@
     Will be mostly used on o-layout__item
 */
 
-.u-flex-basis-auto {}
+.u-flex-basis-auto {
+    flex-basis: auto !important;
+}
 
 .u-1-of-2 {}
 

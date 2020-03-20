@@ -9,7 +9,7 @@
 /*
     Generic: Page
     ---
-    Global page styles
+    Global page styles + universal box-sizing:
 */
 
 html {
@@ -17,7 +17,15 @@ html {
     line-height: 1.5;
     font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
     color: #111;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 /*
@@ -38,6 +46,7 @@ html {
     color: white;
     text-shadow: none;
 }
+
 /*------------------------------------*\
   #Elements
 \*------------------------------------*/
@@ -65,14 +74,6 @@ h1 {
     font-weight: normal;
     line-height: 40px;
     margin: 0 0 24px;
-}
-
-/* Example inline media query */
-@media (min-width: 768px) {
-    h1 {
-        font-size: 58px;
-        line-height: 64px;
-    }
 }
 
 h2 {
@@ -157,6 +158,14 @@ a:focus {
     color: Crimson;
 }
 
+/* Example inline media query */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 58px;
+        line-height: 64px;
+    }
+}
+
 /*------------------------------------*\
   #OBJECTS
 \*------------------------------------*/
@@ -173,19 +182,18 @@ a:focus {
 }
 
 .o-row--primary {
-
     background: #e85e00;
-    color:white;
+    color: white;
 }
 
-.o-row--dark {
-    background: #333333;
+.o-row--grey-dark {
+    background-color: #111;
     color: white;
 }
 
 @media (min-width: 768px) {
     .o-row--lg {
-        padding: 48px 48px 0;
+        padding: 48px 48px 24px;
     }
 }
 
@@ -196,305 +204,11 @@ a:focus {
 */
 
 .o-container {
-   max-width: 90em;
-   margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 90em; /* 90 * 16px = 1440px */
 }
-
-
-
-/*------------------------------------*\
-  #COMPONENTS
-\*------------------------------------*/
-
-/*
-    Component: layout block
-    ---
-    A small component to demonstrate the layout items
-*/
-
-.c-layout-block {
-    background-color: LightGrey;
-    padding: 8px 12px;
-    font-size: 14px;
-    line-height: 16px;
-}
-
-.c-layout-block--ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-/* ------------------------------------*\
-  #UTILITIES
-\*------------------------------------*/
-
-/*
-    Utilities: max-width
-    ---
-    Utility classes to put specific max widths onto elements
-*/
-
-.u-max-width-sm {
-    max-width: 36em !important;
-}
-
-.u-max-width-md {
-    max-width: 45em;
-}
-
-.u-max-width-lg {
-    max-width: 60em;
-}
-
-.u-max-width-xl {
-    max-width: 75em;
-}
-
-.u-max-width-none {
-    max-width: none;
-}
-
-/*
-    Utility: Flex
-    ---
-    Utility classes to put specific flex properties onto elements
-    Will be mostly used on o-layout__item
-*/
-
-.u-flex-basis-auto {
-    flex-basis: auto !important; 
-}
-
-.u-1-of-2 {
-    flex-basis: calc(100% / 2) !important;
-}
-
-.u-1-of-3 {
-    flex-basis: calc(100% /3)!important;
-}
-
-.u-2-of-3 {
-    flex-basis: calc(100%/3*2) !important;
-}
-
-.u-1-of-4 {
-    flex-basis: calc(100%/4)!important;
-}
-
-.u-3-of-4 {
-    flex-basis: calc(100%/4*3)!important;
-}
-
-.u-1-of-5 {
-    flex-basis: calc(100%/5)!important;
-}
-
-.u-2-of-5 {
-    flex-basis: calc(100%/5*2)!important;
-}
-
-.u-3-of-5 {
-    flex-basis: calc(100%/5*3)!important;
-}
-
-.u-4-of-5 {
-    flex-basis: calc(100%/5*4)!important;
-}
-
-.u-1-of-6 {
-    flex-basis: calc(100%/6*1)!important;
-}
-
-.u-5-of-6 {
-    flex-basis: calc(100%/6*5)!important;
-}
-
-@media (min-width: 576px) {
-    .u-1-of-2-bp1 {
-        flex-basis: calc(100% / 2) !important;
-    }
-    
-    .u-1-of-3-bp1 {
-        flex-basis: calc(100% /3)!important;
-    }
-    
-    .u-2-of-3-bp1 {
-        flex-basis: calc(100%/3*2) !important;
-    }
-    
-    .u-1-of-4-bp1 {
-        flex-basis: calc(100%/4)!important;
-    }
-    
-    .u-3-of-4-bp1 {
-        flex-basis: calc(100%/4*3)!important;
-    }
-    
-    .u-1-of-5-bp1 {
-        flex-basis: calc(100%/5)!important;
-    }
-    
-    .u-2-of-5-bp1 {
-        flex-basis: calc(100%/5*2)!important;
-    }
-    
-    .u-3-of-5-bp1 {
-        flex-basis: calc(100%/5*3)!important;
-    }
-    
-    .u-4-of-5-bp1 {
-        flex-basis: calc(100%/5*4)!important;
-    }
-    
-    .u-1-of-6-bp1 {
-        flex-basis: calc(100%/6*1)!important;
-    }
-    
-    .u-5-of-6-bp1 {
-        flex-basis: calc(100%/6*5)!important;
-    }
-}
-
-@media (min-width: 768px) {
-    .u-1-of-2-bp2 {
-        flex-basis: calc(100% / 2) !important;
-    }
-    
-    .u-1-of-3-bp2 {
-        flex-basis: calc(100% /3)!important;
-    }
-    
-    .u-2-of-3-bp2 {
-        flex-basis: calc(100%/3*2) !important;
-    }
-    
-    .u-1-of-4-bp2 {
-        flex-basis: calc(100%/4)!important;
-    }
-    
-    .u-3-of-4-bp2 {
-        flex-basis: calc(100%/4*3)!important;
-    }
-    
-    .u-1-of-5-bp2 {
-        flex-basis: calc(100%/5)!important;
-    }
-    
-    .u-2-of-5-bp2 {
-        flex-basis: calc(100%/5*2)!important;
-    }
-    
-    .u-3-of-5-bp2 {
-        flex-basis: calc(100%/5*3)!important;
-    }
-    
-    .u-4-of-5-bp2 {
-        flex-basis: calc(100%/5*4)!important;
-    }
-    
-    .u-1-of-6-bp2 {
-        flex-basis: calc(100%/6*1)!important;
-    }
-    
-    .u-5-of-6-bp2 {
-        flex-basis: calc(100%/6*5)!important;
-    }
-}
-
-@media (min-width: 992px) {
-    .u-1-of-2-bp3 {
-        flex-basis: calc(100% / 2) !important;
-    }
-    
-    .u-1-of-3-bp3 {
-        flex-basis: calc(100% /3)!important;
-    }
-    
-    .u-2-of-3-bp3 {
-        flex-basis: calc(100%/3*2) !important;
-    }
-    
-    .u-1-of-4-bp3 {
-        flex-basis: calc(100%/4)!important;
-    }
-    
-    .u-3-of-4-bp3 {
-        flex-basis: calc(100%/4*3)!important;
-    }
-    
-    .u-1-of-5-bp3 {
-        flex-basis: calc(100%/5)!important;
-    }
-    
-    .u-2-of-5-bp3 {
-        flex-basis: calc(100%/5*2)!important;
-    }
-    
-    .u-3-of-5-bp3 {
-        flex-basis: calc(100%/5*3)!important;
-    }
-    
-    .u-4-of-5-bp3 {
-        flex-basis: calc(100%/5*4)!important;
-    }
-    
-    .u-1-of-6-bp3 {
-        flex-basis: calc(100%/6*1)!important;
-    }
-    
-    .u-5-of-6-bp3 {
-        flex-basis: calc(100%/6*5)!important;
-    }
-}
-
-@media (min-width: 1200px) {
-    .u-1-of-2-bp4 {
-        flex-basis: calc(100% / 2) !important;
-    }
-    
-    .u-1-of-3-bp4 {
-        flex-basis: calc(100% /3)!important;
-    }
-    
-    .u-2-of-3-bp4 {
-        flex-basis: calc(100%/3*2) !important;
-    }
-    
-    .u-1-of-4-bp4 {
-        flex-basis: calc(100%/4)!important;
-    }
-    
-    .u-3-of-4-bp4 {
-        flex-basis: calc(100%/4*3)!important;
-    }
-    
-    .u-1-of-5-bp4 {
-        flex-basis: calc(100%/5)!important;
-    }
-    
-    .u-2-of-5-bp4 {
-        flex-basis: calc(100%/5*2)!important;
-    }
-    
-    .u-3-of-5-bp4 {
-        flex-basis: calc(100%/5*3)!important;
-    }
-    
-    .u-4-of-5-bp4 {
-        flex-basis: calc(100%/5*4)!important;
-    }
-    
-    .u-1-of-6-bp4 {
-        flex-basis: calc(100%/6*1)!important;
-    }
-    
-    .u-5-of-6-bp4 {
-        flex-basis: calc(100%/6*5)!important;
-    }
-}
-
 
 /*
     Objects: Layout
@@ -511,9 +225,10 @@ a:focus {
     flex-wrap: wrap;
 }
 
-.o-layout__item {
-    flex-basis: 100%;
-}
+    .o-layout__item {
+        /* width: 100%; */
+        flex-basis: 100%;
+    }
 
 /* gutter modifiers, these affect o-layout__item too */
 
@@ -523,7 +238,6 @@ a:focus {
 
 .o-layout--gutter > .o-layout__item {
     padding: 0 12px;
-    box-sizing: border-box;
 }
 
 .o-layout--gutter-sm {
@@ -532,7 +246,6 @@ a:focus {
 
 .o-layout--gutter-sm > .o-layout__item {
     padding: 0 6px;
-    box-sizing: border-box;
 }
 
 .o-layout--gutter-lg {
@@ -541,7 +254,6 @@ a:focus {
 
 .o-layout--gutter-lg > .o-layout__item {
     padding: 0 24px;
-    
 }
 
 /* reverse horizontal row modifier */
@@ -568,40 +280,40 @@ a:focus {
     justify-content: space-around;
 }
 
-.o-layout--justify-space-between {
-    justify-content: space-between;
-}
-
 .o-layout--justify-space-evenly {
     justify-content: space-evenly;
 }
 
-/* Vertical item alignment modifiers */
+.o-layout--justify-space-between {
+    justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
 
 .o-layout--align-start {
-    align-self: flex-start;
+    align-items: flex-start;
 }
 
 .o-layout--align-end {
-    align-self: flex-end;
+    align-items: flex-end;
 }
 
 .o-layout--align-center {
-    align-self: center;
+    align-items: center;
 }
 
 .o-layout--align-baseline {
-    align-self: baseline;
+    align-items: baseline;
 }
 
-/* Vertical content alignment modifiers. Only work if there is one than one flex item */
+/* Vertical alignment modifiers that only work if there is one than one flex item */
 
 .o-layout--align-content-start {
-    align-content: flex-start;
+    align-content: start;
 }
 
 .o-layout--align-content-end {
-    align-content: flex-end;
+    align-content: end;
 }
 
 .o-layout--align-content-center {
@@ -614,6 +326,340 @@ a:focus {
 
 .o-layout--align-content-space-between {
     align-content: space-between;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: layout block
+    ---
+    A small component to demonstrate the layout items
+*/
+
+.c-layout-block {
+    background-color: LightGrey;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.c-layout-block--ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*
+    Components: Author
+*/
+
+.c-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.c-author__image {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    margin-right: 16px;
+}
+
+.c-author__caption {
+    padding-top: 0;
+}
+
+.c-author__name,
+.c-author__meta {
+    margin-bottom: 0;
+}
+
+.c-author__name {
+    font-size: 16px;
+    line-height: 16px;
+    color: #111;
+}
+
+.c-author__meta {
+    font-size: 14px;
+    font-family: "Inter UI", "Helvetica Neue", Helvetica, arial, sans-serif;
+    line-height: 16px;
+    margin-top: 4px;
+}
+
+@media (min-width: 992px) {
+    .c-author {
+        display: block;
+    }
+    .c-author__image {
+        margin-bottom: 20px;
+    }
+}
+
+/*------------------------------------*\
+  #UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: spacing
+    ---
+    Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-mb-clear {
+    margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+    margin-bottom: 4px !important;
+}
+
+.u-mb-sm {
+    margin-bottom: 8px !important;
+}
+
+.u-mb-md {
+    margin-bottom: 16px !important;
+}
+
+.u-mb-lg {
+    margin-bottom: 32px !important;
+}
+
+.u-mb-xl {
+    margin-bottom: 48px !important;
+}
+
+/*
+    Utilities: max-width
+    ---
+    Utility classes to put specific max widths onto elements
+*/
+
+.u-max-width-sm {
+    max-width: 36em !important;
+}
+
+.u-max-width-md {
+    max-width: 45em !important;
+}
+
+.u-max-width-lg {
+    max-width: 60em !important;
+}
+
+.u-max-width-xl {
+    max-width: 75em !important;
+}
+
+.u-max-width-none {
+    max-width: none !important;
+}
+
+/*
+    Utility: Flex
+    ---
+    Utility classes to put specific flex properties onto elements
+    Will be mostly used on o-layout__item
+*/
+
+.u-flex-basis-auto {
+    flex-basis: auto !important;
+}
+
+.u-flex-grow-1 {
+    flex-grow: 1 !important;
+}
+
+.u-1-of-2 {
+    flex-basis: calc(100% / 2) !important;
+}
+
+.u-1-of-3 {
+    flex-basis: calc(100% / 3) !important;
+}
+
+.u-2-of-3 {
+    flex-basis: calc(100% / 3 * 2) !important;
+}
+
+.u-1-of-4 {
+    flex-basis: calc(100% / 4) !important;
+}
+
+.u-3-of-4 {
+    flex-basis: calc(100% / 4 * 3) !important;
+}
+
+.u-1-of-5 {
+    flex-basis: calc(100% / 5) !important;
+}
+
+.u-2-of-5 {
+    flex-basis: calc(100% / 5 * 2) !important;
+}
+
+.u-3-of-5 {
+    flex-basis: calc(100% / 5 * 3) !important;
+}
+
+.u-4-of-5 {
+    flex-basis: calc(100% / 5 * 4) !important;
+}
+
+.u-1-of-6 {
+    flex-basis: calc(100% / 6) !important;
+}
+
+.u-5-of-6 {
+    flex-basis: calc(100% / 6 * 5) !important;
+}
+
+@media (min-width: 576px) {
+    .u-1-of-2-bp1 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp1 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp1 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp1 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp1 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp1 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp1 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp1 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp1 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .u-1-of-2-bp2 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp2 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp2 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp2 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp2 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp2 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp2 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp2 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp2 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .u-1-of-2-bp3 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp3 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp3 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp3 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp3 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp3 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp3 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp3 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp3 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .u-1-of-2-bp4 {
+        flex-basis: calc(100% / 2) !important;
+    }
+    .u-1-of-3-bp4 {
+        flex-basis: calc(100% / 3) !important;
+    }
+    .u-2-of-3-bp4 {
+        flex-basis: calc(100% / 3 * 2) !important;
+    }
+    .u-1-of-4-bp4 {
+        flex-basis: calc(100% / 4) !important;
+    }
+    .u-3-of-4-bp4 {
+        flex-basis: calc(100% / 4 * 3) !important;
+    }
+    .u-1-of-5-bp4 {
+        flex-basis: calc(100% / 5) !important;
+    }
+    .u-2-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 2) !important;
+    }
+    .u-3-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 3) !important;
+    }
+    .u-4-of-5-bp4 {
+        flex-basis: calc(100% / 5 * 4) !important;
+    }
+    .u-1-of-6-bp4 {
+        flex-basis: calc(100% / 6) !important;
+    }
+    .u-5-of-6-bp4 {
+        flex-basis: calc(100% / 6 * 5) !important;
+    }
 }
 
 /*------------------------------------*\
